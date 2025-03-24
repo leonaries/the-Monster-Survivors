@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Survivors - Epic Survival Adventure Game</title>
+    <link rel="canonical" href="https://monstersurvivors.top" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-background {
+            background: linear-gradient(120deg, #0f172a 0%, #1e3a8a 25%, #1d4ed8 50%, #2563eb 75%, #3b82f6 100%);
+            animation: gradient 15s ease infinite;
+            background-size: 400% 400%;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .glass-card {
+            background: rgba(30, 58, 138, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(30, 58, 138, 0.37);
+        }
+        .neon-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5),
+                         0 0 20px rgba(59, 130, 246, 0.3),
+                         0 0 30px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="gradient-background min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-300 tracking-tight neon-text">
+                Monster Survivors
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-200 font-light mb-8 neon-text">
+                Survive endless waves of monsters in this thrilling roguelike adventure!
+            </p>
+        </header>
+
+        <!-- Game Section -->
+        <div class="glass-card rounded-2xl p-4 mb-12 hover:border-blue-400 transition-colors duration-300">
+            <div class="relative w-full" style="padding-top: 56.25%">
+                <iframe 
+                    src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html"
+                    class="absolute top-0 left-0 w-full h-full rounded-xl"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Game Features -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="glass-card rounded-xl p-6 transform hover:scale-105 transition-all duration-300 hover:border-blue-400">
+                <h2 class="text-2xl font-bold mb-4 text-blue-300 neon-text">
+                    Game Features
+                </h2>
+                <ul class="space-y-3 text-blue-100">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
+                        </svg>
+                        Endless Gameplay
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
+                        </svg>
+                        Multiple Character Classes
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
+                        </svg>
+                        Unique Power-ups
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 transform hover:scale-105 transition-all duration-300 hover:border-blue-400">
+                <h2 class="text-2xl font-bold mb-4 text-blue-300 neon-text">
+                    How to Play
+                </h2>
+                <ul class="space-y-3 text-blue-100">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
+                        </svg>
+                        Use WASD or Arrow Keys to Move
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
+                        </svg>
+                        Collect Experience to Level Up
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
+                        </svg>
+                        Choose Upgrades Wisely
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Game Description -->
+        <div class="glass-card rounded-xl p-6 mb-12 hover:border-blue-400 transition-colors duration-300">
+            <h2 class="text-2xl font-bold mb-4 text-blue-300 neon-text">
+                About Monster Survivors
+            </h2>
+            <p class="text-blue-100 leading-relaxed">
+                Monster Survivors is an exciting roguelike survival game where you face endless waves of monsters. Choose your character, level up your abilities, and see how long you can survive in this challenging adventure. With each run being unique, you'll discover new strategies and combinations to overcome the increasing difficulty.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-blue-300 text-sm">
+            <p>&copy; 2025 Monster Survivors. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
