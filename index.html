@@ -3,126 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Survivors - Epic Survival Adventure Game</title>
-    <link rel="canonical" href="https://monstersurvivors.top" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .gradient-background {
-            background: linear-gradient(120deg, #0f172a 0%, #1e3a8a 25%, #1d4ed8 50%, #2563eb 75%, #3b82f6 100%);
-            animation: gradient 15s ease infinite;
-            background-size: 400% 400%;
-        }
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .glass-card {
-            background: rgba(30, 58, 138, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(30, 58, 138, 0.37);
-        }
-        .neon-text {
-            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5),
-                         0 0 20px rgba(59, 130, 246, 0.3),
-                         0 0 30px rgba(59, 130, 246, 0.2);
-        }
-    </style>
+    <title>Game Hub - Your Ultimate Gaming Destination</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="gradient-background min-h-screen text-white">
-    <div class="container mx-auto px-4 py-8 max-w-6xl">
-        <!-- Header Section -->
-        <header class="text-center mb-12">
-            <h1 class="text-5xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-300 tracking-tight neon-text">
-                Monster Survivors
-            </h1>
-            <p class="text-xl md:text-2xl text-blue-200 font-light mb-8 neon-text">
-                Survive endless waves of monsters in this thrilling roguelike adventure!
-            </p>
-        </header>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="./" class="logo">
+                Game<span class="highlight">Hub</span>
+            </a>
 
-        <!-- Game Section -->
-        <div class="glass-card rounded-2xl p-4 mb-12 hover:border-blue-400 transition-colors duration-300">
-            <div class="relative w-full" style="padding-top: 56.25%">
-                <iframe 
-                    src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html"
-                    class="absolute top-0 left-0 w-full h-full rounded-xl"
-                    frameborder="0"
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-
-        <!-- Game Features -->
-        <div class="grid md:grid-cols-2 gap-8 mb-12">
-            <div class="glass-card rounded-xl p-6 transform hover:scale-105 transition-all duration-300 hover:border-blue-400">
-                <h2 class="text-2xl font-bold mb-4 text-blue-300 neon-text">
-                    Game Features
-                </h2>
-                <ul class="space-y-3 text-blue-100">
-                    <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                        </svg>
-                        Endless Gameplay
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                        </svg>
-                        Multiple Character Classes
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                        </svg>
-                        Unique Power-ups
-                    </li>
-                </ul>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" 
+                       placeholder="Search games..." 
+                       class="search-input">
+                <button class="search-button">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
             </div>
 
-            <div class="glass-card rounded-xl p-6 transform hover:scale-105 transition-all duration-300 hover:border-blue-400">
-                <h2 class="text-2xl font-bold mb-4 text-blue-300 neon-text">
-                    How to Play
-                </h2>
-                <ul class="space-y-3 text-blue-100">
-                    <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                        </svg>
-                        Use WASD or Arrow Keys to Move
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                        </svg>
-                        Collect Experience to Level Up
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="currentColor" viewbox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                        </svg>
-                        Choose Upgrades Wisely
-                    </li>
-                </ul>
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="./" class="nav-link">Home</a>
+                <a href="./categories.html" class="nav-link">Categories</a>
+                <a href="./top-games.html" class="nav-link">Top Games</a>
+                <a href="./new-games.html" class="nav-link">New Games</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="./" class="nav-link">Home</a>
+            <a href="./categories.html" class="nav-link">Categories</a>
+            <a href="./top-games.html" class="nav-link">Top Games</a>
+            <a href="./new-games.html" class="nav-link">New Games</a>
+            <!-- Mobile Search -->
+            <div class="search-container">
+                <input type="text" 
+                       placeholder="Search games..." 
+                       class="search-input">
+                <button class="search-button">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
             </div>
         </div>
+    </nav>
 
-        <!-- Game Description -->
-        <div class="glass-card rounded-xl p-6 mb-12 hover:border-blue-400 transition-colors duration-300">
-            <h2 class="text-2xl font-bold mb-4 text-blue-300 neon-text">
-                About Monster Survivors
-            </h2>
-            <p class="text-blue-100 leading-relaxed">
-                Monster Survivors is an exciting roguelike survival game where you face endless waves of monsters. Choose your character, level up your abilities, and see how long you can survive in this challenging adventure. With each run being unique, you'll discover new strategies and combinations to overcome the increasing difficulty.
-            </p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">
+            Game Hub: Dive into the latest and most thrilling games for a fast-paced, competitive edge!
+        </h1>
+        <p class="hero-subtitle">
+            Experience the thrill of instant gaming - no downloads required. Jump straight into action with our curated collection of browser games!
+        </p>
+    </section>
+
+    <!-- Featured Games -->
+    <section class="featured-section">
+        <div class="section-header">
+            <h2 class="section-title">Featured Games</h2>
+            <a href="./all-games.html" class="view-all-button">View All Games</a>
         </div>
+        <div class="games-grid">
+            <!-- Train Miner -->
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/TrainMinerTeaser.jpg" alt="Train Miner" class="game-image">
+                    <div class="game-overlay">
+                        <a href="https://play.famobi.com/train-miner" target="_blank" class="play-button">Play Now</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Train Miner</h3>
+                    <p class="game-description">Explore underground mines with your train, collect resources, and upgrade your equipment in this exciting mining adventure!</p>
+                </div>
+            </div>
 
-        <!-- Footer -->
-        <footer class="text-center text-blue-300 text-sm">
-            <p>&copy; 2025 Monster Survivors. All rights reserved.</p>
-        </footer>
-    </div>
+            <!-- Rise Up -->
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/RiseUpTeaser.jpg" alt="Rise Up" class="game-image">
+                    <div class="game-overlay">
+                        <a href="https://play.famobi.com/rise-up" target="_blank" class="play-button">Play Now</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Rise Up</h3>
+                    <p class="game-description">Guide your balloon through challenging obstacles in this addictive and visually stunning arcade game!</p>
+                </div>
+            </div>
+
+            <!-- Giant Rush -->
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/GiantRushTeaser.jpg" alt="Giant Rush" class="game-image">
+                    <div class="game-overlay">
+                        <a href="https://play.famobi.com/giant-rush" target="_blank" class="play-button">Play Now</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Giant Rush</h3>
+                    <p class="game-description">Transform from a tiny human into a massive giant while dodging obstacles and collecting power-ups!</p>
+                </div>
+            </div>
+
+            <!-- Western Sniper -->
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/WesternSniperTeaser.jpg" alt="Western Sniper" class="game-image">
+                    <div class="game-overlay">
+                        <a href="https://play.famobi.com/western-sniper" target="_blank" class="play-button">Play Now</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Western Sniper</h3>
+                    <p class="game-description">Test your shooting skills in this Wild West themed sniper game. Take down targets and become the best shooter!</p>
+                </div>
+            </div>
+
+            <!-- Go Escape -->
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/GoEscapeTeaser.jpg" alt="Go Escape" class="game-image">
+                    <div class="game-overlay">
+                        <a href="https://play.famobi.com/go-escape" target="_blank" class="play-button">Play Now</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Go Escape</h3>
+                    <p class="game-description">Navigate through challenging mazes and obstacles in this fast-paced escape adventure!</p>
+                </div>
+            </div>
+
+            <!-- Color Fill 3D -->
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/ColorFill3dTeaser.jpg" alt="Color Fill 3D" class="game-image">
+                    <div class="game-overlay">
+                        <a href="https://play.famobi.com/color-fill-3d" target="_blank" class="play-button">Play Now</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Color Fill 3D</h3>
+                    <p class="game-description">Fill the board with colors while avoiding obstacles in this relaxing yet challenging puzzle game!</p>
+                </div>
+            </div>
+
+            <!-- Parking Jam -->
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/ParkingJamTeaser.jpg" alt="Parking Jam" class="game-image">
+                    <div class="game-overlay">
+                        <a href="https://play.famobi.com/parking-jam" target="_blank" class="play-button">Play Now</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Parking Jam</h3>
+                    <p class="game-description">Solve challenging parking puzzles by moving cars and clearing the way!</p>
+                </div>
+            </div>
+
+            <!-- Thief Puzzle -->
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/ThiefPuzzleTeaser.jpg" alt="Thief Puzzle" class="game-image">
+                    <div class="game-overlay">
+                        <a href="https://play.famobi.com/thief-puzzle" target="_blank" class="play-button">Play Now</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Thief Puzzle</h3>
+                    <p class="game-description">Use your wit to help the thief steal treasures in this clever puzzle game!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
