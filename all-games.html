@@ -83,10 +83,10 @@
             mobileMenu.classList.toggle('active');
         });
 
-        // Load and display all games
+        // Load games data
         async function loadGames() {
             try {
-                const response = await fetch('./data/current_game_info.json');
+                const response = await fetch('./data/games_info.json');
                 const games = await response.json();
                 const gamesContainer = document.getElementById('gamesContainer');
                 

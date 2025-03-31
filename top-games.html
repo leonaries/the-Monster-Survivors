@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Games - Game Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="./" class="logo">
+                Game<span class="highlight">Hub</span>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" 
+                       placeholder="Search games..." 
+                       class="search-input">
+                <button class="search-button">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="./" class="nav-link">Home</a>
+                <a href="./categories.html" class="nav-link">Categories</a>
+                <a href="./top-games.html" class="nav-link active">Top Games</a>
+                <a href="./new-games.html" class="nav-link">New Games</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="./" class="nav-link">Home</a>
+            <a href="./categories.html" class="nav-link">Categories</a>
+            <a href="./top-games.html" class="nav-link active">Top Games</a>
+            <a href="./new-games.html" class="nav-link">New Games</a>
+        </div>
+    </nav>
+
+    <!-- Top Games Section -->
+    <section class="top-games-section">
+        <h1 class="section-title">Top Rated Games</h1>
+        
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-button active" data-period="all">All Time</button>
+            <button class="filter-button" data-period="month">This Month</button>
+            <button class="filter-button" data-period="week">This Week</button>
+        </div>
+
+        <!-- Games Grid -->
+        <div class="games-grid" id="topGamesGrid"></div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Load and display top games
+        async function loadTopGames() {
+            try {
+                const response = await fetch('./data/current_game_info.json');
+                const games = await response.json();
+                
+                // Add click event to filter buttons
+                document.querySelectorAll('.filter-button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const period = button.dataset.period;
+                        displayTopGames(games, period);
+                        
+                        // Update active state
+                        document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
+                        button.classList.add('active');
+                    });
+                });
+
+                // Show all-time top games by default
+                displayTopGames(games, 'all');
+            } catch (error) {
+                console.error('Error loading games:', error);
+            }
+        }
+
+        function displayTopGames(games, period) {
+            const gamesContainer = document.getElementById('topGamesGrid');
+            
+            // Sort games by rating (for demo, we'll use the first 8 games)
+            const topGames = games.slice(0, 8);
+            
+            gamesContainer.innerHTML = '';
+            topGames.forEach((game, index) => {
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                gameCard.innerHTML = `
+                    <div class="game-image-container">
+                        <div class="rank-badge">#${index + 1}</div>
+                        <img src="${game.image_url}" alt="${game.name}" class="game-image">
+                        <div class="game-overlay">
+                            <a href="${game.textarea_link}" target="_blank" class="play-button">Play Now</a>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">${game.name}</h3>
+                        <p class="game-description">${game.description}</p>
+                    </div>
+                `;
+                gamesContainer.appendChild(gameCard);
+            });
+        }
+
+        // Load games when the page loads
+        window.addEventListener('load', loadTopGames);
+    </script>
+</body>
+</html>

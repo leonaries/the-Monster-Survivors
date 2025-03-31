@@ -80,118 +80,7 @@
             <h2 class="section-title">Featured Games</h2>
             <a href="./all-games.html" class="view-all-button">View All Games</a>
         </div>
-        <div class="games-grid">
-            <!-- Train Miner -->
-            <div class="game-card">
-                <div class="game-image-container">
-                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/TrainMinerTeaser.jpg" alt="Train Miner" class="game-image">
-                    <div class="game-overlay">
-                        <a href="https://play.famobi.com/train-miner" target="_blank" class="play-button">Play Now</a>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">Train Miner</h3>
-                    <p class="game-description">Explore underground mines with your train, collect resources, and upgrade your equipment in this exciting mining adventure!</p>
-                </div>
-            </div>
-
-            <!-- Rise Up -->
-            <div class="game-card">
-                <div class="game-image-container">
-                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/RiseUpTeaser.jpg" alt="Rise Up" class="game-image">
-                    <div class="game-overlay">
-                        <a href="https://play.famobi.com/rise-up" target="_blank" class="play-button">Play Now</a>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">Rise Up</h3>
-                    <p class="game-description">Guide your balloon through challenging obstacles in this addictive and visually stunning arcade game!</p>
-                </div>
-            </div>
-
-            <!-- Giant Rush -->
-            <div class="game-card">
-                <div class="game-image-container">
-                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/GiantRushTeaser.jpg" alt="Giant Rush" class="game-image">
-                    <div class="game-overlay">
-                        <a href="https://play.famobi.com/giant-rush" target="_blank" class="play-button">Play Now</a>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">Giant Rush</h3>
-                    <p class="game-description">Transform from a tiny human into a massive giant while dodging obstacles and collecting power-ups!</p>
-                </div>
-            </div>
-
-            <!-- Western Sniper -->
-            <div class="game-card">
-                <div class="game-image-container">
-                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/WesternSniperTeaser.jpg" alt="Western Sniper" class="game-image">
-                    <div class="game-overlay">
-                        <a href="https://play.famobi.com/western-sniper" target="_blank" class="play-button">Play Now</a>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">Western Sniper</h3>
-                    <p class="game-description">Test your shooting skills in this Wild West themed sniper game. Take down targets and become the best shooter!</p>
-                </div>
-            </div>
-
-            <!-- Go Escape -->
-            <div class="game-card">
-                <div class="game-image-container">
-                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/GoEscapeTeaser.jpg" alt="Go Escape" class="game-image">
-                    <div class="game-overlay">
-                        <a href="https://play.famobi.com/go-escape" target="_blank" class="play-button">Play Now</a>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">Go Escape</h3>
-                    <p class="game-description">Navigate through challenging mazes and obstacles in this fast-paced escape adventure!</p>
-                </div>
-            </div>
-
-            <!-- Color Fill 3D -->
-            <div class="game-card">
-                <div class="game-image-container">
-                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/ColorFill3dTeaser.jpg" alt="Color Fill 3D" class="game-image">
-                    <div class="game-overlay">
-                        <a href="https://play.famobi.com/color-fill-3d" target="_blank" class="play-button">Play Now</a>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">Color Fill 3D</h3>
-                    <p class="game-description">Fill the board with colors while avoiding obstacles in this relaxing yet challenging puzzle game!</p>
-                </div>
-            </div>
-
-            <!-- Parking Jam -->
-            <div class="game-card">
-                <div class="game-image-container">
-                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/ParkingJamTeaser.jpg" alt="Parking Jam" class="game-image">
-                    <div class="game-overlay">
-                        <a href="https://play.famobi.com/parking-jam" target="_blank" class="play-button">Play Now</a>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">Parking Jam</h3>
-                    <p class="game-description">Solve challenging parking puzzles by moving cars and clearing the way!</p>
-                </div>
-            </div>
-
-            <!-- Thief Puzzle -->
-            <div class="game-card">
-                <div class="game-image-container">
-                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/ThiefPuzzleTeaser.jpg" alt="Thief Puzzle" class="game-image">
-                    <div class="game-overlay">
-                        <a href="https://play.famobi.com/thief-puzzle" target="_blank" class="play-button">Play Now</a>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">Thief Puzzle</h3>
-                    <p class="game-description">Use your wit to help the thief steal treasures in this clever puzzle game!</p>
-                </div>
-            </div>
+        <div class="games-grid" id="games-grid">
         </div>
     </section>
 
@@ -203,6 +92,71 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
         });
+
+        // Load games data
+        async function loadGames() {
+            try {
+                const response = await fetch('./data/games_info.json');
+                const games = await response.json();
+                displayFeaturedGames(games.slice(0, 8)); // Display first 8 games
+            } catch (error) {
+                console.error('Error loading games:', error);
+            }
+        }
+
+        // Display featured games
+        function displayFeaturedGames(games) {
+            const gamesGrid = document.getElementById('games-grid');
+            gamesGrid.innerHTML = '';
+
+            games.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.classList.add('game-card');
+
+                const gameImageContainer = document.createElement('div');
+                gameImageContainer.classList.add('game-image-container');
+
+                const gameImage = document.createElement('img');
+                gameImage.src = game.image;
+                gameImage.alt = game.title;
+                gameImage.classList.add('game-image');
+
+                const gameOverlay = document.createElement('div');
+                gameOverlay.classList.add('game-overlay');
+
+                const playButton = document.createElement('a');
+                playButton.href = game.url;
+                playButton.target = '_blank';
+                playButton.classList.add('play-button');
+                playButton.textContent = 'Play Now';
+
+                gameOverlay.appendChild(playButton);
+
+                gameImageContainer.appendChild(gameImage);
+                gameImageContainer.appendChild(gameOverlay);
+
+                const gameInfo = document.createElement('div');
+                gameInfo.classList.add('game-info');
+
+                const gameTitle = document.createElement('h3');
+                gameTitle.classList.add('game-title');
+                gameTitle.textContent = game.title;
+
+                const gameDescription = document.createElement('p');
+                gameDescription.classList.add('game-description');
+                gameDescription.textContent = game.description;
+
+                gameInfo.appendChild(gameTitle);
+                gameInfo.appendChild(gameDescription);
+
+                gameCard.appendChild(gameImageContainer);
+                gameCard.appendChild(gameInfo);
+
+                gamesGrid.appendChild(gameCard);
+            });
+        }
+
+        loadGames();
     </script>
 </body>
 </html>

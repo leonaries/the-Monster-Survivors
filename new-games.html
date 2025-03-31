@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Games - Game Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="./" class="logo">
+                Game<span class="highlight">Hub</span>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" 
+                       placeholder="Search games..." 
+                       class="search-input">
+                <button class="search-button">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="./" class="nav-link">Home</a>
+                <a href="./categories.html" class="nav-link">Categories</a>
+                <a href="./top-games.html" class="nav-link">Top Games</a>
+                <a href="./new-games.html" class="nav-link active">New Games</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="./" class="nav-link">Home</a>
+            <a href="./categories.html" class="nav-link">Categories</a>
+            <a href="./top-games.html" class="nav-link">Top Games</a>
+            <a href="./new-games.html" class="nav-link active">New Games</a>
+        </div>
+    </nav>
+
+    <!-- New Games Section -->
+    <section class="new-games-section">
+        <div class="section-header">
+            <h1 class="section-title">Latest Releases</h1>
+            <div class="time-filter">
+                <button class="time-button active" data-time="today">Today</button>
+                <button class="time-button" data-time="week">This Week</button>
+                <button class="time-button" data-time="month">This Month</button>
+            </div>
+        </div>
+
+        <!-- Featured New Game -->
+        <div class="featured-new-game">
+            <div class="featured-game-content">
+                <div class="featured-game-image">
+                    <img src="./images/placeholder.jpg" alt="Featured Game">
+                    <div class="featured-game-overlay">
+                        <a href="#" target="_blank" class="play-button">Play Now</a>
+                    </div>
+                </div>
+                <div class="featured-game-info">
+                    <div class="new-badge">New Release</div>
+                    <h2></h2>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- More New Games -->
+        <h2 class="sub-section-title">More New Games</h2>
+        <div class="games-grid" id="newGamesGrid"></div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Load and display new games
+        async function loadNewGames() {
+            try {
+                const response = await fetch('./data/games_info.json');
+                const games = await response.json();
+                
+                // Add click event to time filter buttons
+                document.querySelectorAll('.time-button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const timeFrame = button.dataset.time;
+                        displayNewGames(games, timeFrame);
+                        
+                        // Update active state
+                        document.querySelectorAll('.time-button').forEach(b => b.classList.remove('active'));
+                        button.classList.add('active');
+                    });
+                });
+
+                // Show today's new games by default
+                displayNewGames(games, 'today');
+            } catch (error) {
+                console.error('Error loading games:', error);
+            }
+        }
+
+        function displayNewGames(games, timeFrame) {
+            // Display featured new game
+            const featuredGame = games[0]; // Use first game as featured
+            const featuredContainer = document.querySelector('.featured-new-game');
+            
+            // Update featured game content
+            featuredContainer.querySelector('.featured-game-image img').src = featuredGame.image_url;
+            featuredContainer.querySelector('.featured-game-image img').alt = featuredGame.name;
+            featuredContainer.querySelector('.featured-game-overlay .play-button').href = featuredGame.textarea_link;
+            featuredContainer.querySelector('.featured-game-info h2').textContent = featuredGame.name;
+            featuredContainer.querySelector('.featured-game-info p').textContent = featuredGame.description;
+
+            // Display other new games
+            const gamesContainer = document.getElementById('newGamesGrid');
+            const newGames = games.slice(1, 7); // Show next 6 games
+            
+            gamesContainer.innerHTML = '';
+            newGames.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                gameCard.innerHTML = `
+                    <div class="game-image-container">
+                        <div class="new-badge">New</div>
+                        <img src="${game.image_url}" alt="${game.name}" class="game-image">
+                        <div class="game-overlay">
+                            <a href="${game.textarea_link}" target="_blank" class="play-button">Play Now</a>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">${game.name}</h3>
+                        <p class="game-description">${game.description}</p>
+                    </div>
+                `;
+                gamesContainer.appendChild(gameCard);
+            });
+        }
+
+        // Load games when the page loads
+        window.addEventListener('load', loadNewGames);
+    </script>
+</body>
+</html>

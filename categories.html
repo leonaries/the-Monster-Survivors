@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Game Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="./" class="logo">
+                Game<span class="highlight">Hub</span>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" 
+                       placeholder="Search games..." 
+                       class="search-input">
+                <button class="search-button">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="./" class="nav-link">Home</a>
+                <a href="./categories.html" class="nav-link active">Categories</a>
+                <a href="./top-games.html" class="nav-link">Top Games</a>
+                <a href="./new-games.html" class="nav-link">New Games</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button" id="mobile-menu-button">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="./" class="nav-link">Home</a>
+            <a href="./categories.html" class="nav-link active">Categories</a>
+            <a href="./top-games.html" class="nav-link">Top Games</a>
+            <a href="./new-games.html" class="nav-link">New Games</a>
+        </div>
+    </nav>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <h1 class="section-title">Game Categories</h1>
+        <div class="categories-grid">
+            <div class="category-card" data-category="action">
+                <div class="category-icon">🎮</div>
+                <div class="category-content">
+                    <h3>Action</h3>
+                    <p>Fast-paced games with intense gameplay</p>
+                </div>
+            </div>
+            <div class="category-card" data-category="puzzle">
+                <div class="category-icon">🧩</div>
+                <div class="category-content">
+                    <h3>Puzzle</h3>
+                    <p>Challenge your mind with clever puzzles</p>
+                </div>
+            </div>
+            <div class="category-card" data-category="adventure">
+                <div class="category-icon">🗺️</div>
+                <div class="category-content">
+                    <h3>Adventure</h3>
+                    <p>Explore exciting worlds and stories</p>
+                </div>
+            </div>
+            <div class="category-card" data-category="arcade">
+                <div class="category-icon">🕹️</div>
+                <div class="category-content">
+                    <h3>Arcade</h3>
+                    <p>Classic gaming fun for everyone</p>
+                </div>
+            </div>
+            <div class="category-card" data-category="strategy">
+                <div class="category-icon">♟️</div>
+                <div class="category-content">
+                    <h3>Strategy</h3>
+                    <p>Plan your moves and outsmart opponents</p>
+                </div>
+            </div>
+            <div class="category-card" data-category="sports">
+                <div class="category-icon">⚽</div>
+                <div class="category-content">
+                    <h3>Sports</h3>
+                    <p>Competitive sports and racing games</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selected Category Games -->
+        <div class="selected-category">
+            <h2 id="categoryTitle" class="category-title">Action Games</h2>
+            <div class="games-grid" id="categoryGames"></div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Load games and filter by category
+        async function loadGames() {
+            try {
+                const response = await fetch('./data/current_game_info.json');
+                const games = await response.json();
+                
+                // Add click event to category cards
+                document.querySelectorAll('.category-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const category = card.dataset.category;
+                        const title = card.querySelector('h3').textContent;
+                        displayCategoryGames(games, category, title);
+                        
+                        // Update active state
+                        document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                    });
+                });
+
+                // Show Action games by default
+                displayCategoryGames(games, 'action', 'Action Games');
+            } catch (error) {
+                console.error('Error loading games:', error);
+            }
+        }
+
+        function displayCategoryGames(games, category, title) {
+            const gamesContainer = document.getElementById('categoryGames');
+            const categoryTitle = document.getElementById('categoryTitle');
+            categoryTitle.textContent = title;
+            
+            // Filter games by category (simplified for demo)
+            const categoryGames = games.slice(0, 6); // Show first 6 games for demo
+            
+            gamesContainer.innerHTML = '';
+            categoryGames.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                gameCard.innerHTML = `
+                    <div class="game-image-container">
+                        <img src="${game.image_url}" alt="${game.name}" class="game-image">
+                        <div class="game-overlay">
+                            <a href="${game.textarea_link}" target="_blank" class="play-button">Play Now</a>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">${game.name}</h3>
+                        <p class="game-description">${game.description}</p>
+                    </div>
+                `;
+                gamesContainer.appendChild(gameCard);
+            });
+        }
+
+        // Load games when the page loads
+        window.addEventListener('load', loadGames);
+    </script>
+</body>
+</html>
